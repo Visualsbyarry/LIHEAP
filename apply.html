@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply for LIHEAP Assistance</title>
+    <meta
+      name="description"
+      content="Apply for LIHEAP assistance. Submit your application details and review your information before sending."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        background: #f4f8ff;
+      }
+
+      .page-shell {
+        padding: 60px 0 90px;
+      }
+
+      .form-card {
+        max-width: 960px;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 1px solid rgba(13, 59, 115, 0.1);
+        border-radius: 28px;
+        box-shadow: 0 26px 50px rgba(15, 46, 86, 0.08);
+        overflow: hidden;
+      }
+
+      .form-header {
+        background: linear-gradient(135deg, #0d3b73, #123e7a);
+        color: white;
+        padding: 32px 32px 20px;
+      }
+
+      .form-header h1 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3rem);
+        line-height: 1.12;
+      }
+
+      .form-body {
+        padding: 28px 32px 32px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid rgba(13, 59, 115, 0.18);
+        background: #f8fbff;
+        border-radius: 12px;
+        padding: 14px 16px;
+        font: inherit;
+        color: var(--text);
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: 2px solid rgba(13, 59, 115, 0.18);
+        border-color: var(--primary);
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 140px;
+      }
+
+      .submit-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 24px;
+      }
+
+      .review-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 20, 36, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        z-index: 50;
+      }
+
+      .review-modal.open {
+        display: flex;
+      }
+
+      .review-box {
+        width: min(680px, 100%);
+        background: #fff;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+      }
+
+      .review-box h2 {
+        margin-top: 0;
+      }
+
+      .review-list {
+        display: grid;
+        gap: 12px;
+        margin: 24px 0;
+      }
+
+      .review-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid rgba(13, 59, 115, 0.12);
+        padding-bottom: 10px;
+      }
+
+      .review-item span:first-child {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .review-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .mail-note {
+        margin-top: 18px;
+        padding: 14px 16px;
+        background: #eef5ff;
+        border: 1px solid rgba(13, 59, 115, 0.15);
+        border-radius: 12px;
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      @media (max-width: 720px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-body,
+        .form-header {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .submit-row,
+        .review-actions {
+          justify-content: stretch;
+        }
+
+        .submit-row .button,
+        .review-actions .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="index.html" class="brand" aria-label="LIHEAP home">
+          <img src="LIHEAP_blue LOGO.jpg" alt="LIHEAP logo" />
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#programs">Programs</a>
+          <a href="index.html#benefits">Benefits</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container">
+        <div class="form-card">
+          <div class="form-header">
+            <p class="eyebrow" style="color: rgba(255,255,255,0.8);">Application Form</p>
+            <h1>Apply Today for LIHEAP Assistance</h1>
+          </div>
+
+          <div class="form-body">
+            <form id="liheapForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="firstName">First name</label>
+                  <input id="firstName" name="firstName" type="text" required />
+                </div>
+
+                <div class="field">
+                  <label for="lastName">Last name</label>
+                  <input id="lastName" name="lastName" type="text" required />
+                </div>
+
+                <div class="field full">
+                  <label for="address">Address</label>
+                  <input id="address" name="address" type="text" required />
+                </div>
+
+                <div class="field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" type="tel" required />
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required />
+                </div>
+
+                <div class="field full">
+                  <label for="occupationIncome">Occupation and monthly income</label>
+                  <input id="occupationIncome" name="occupationIncome" type="text" required />
+                </div>
+
+                <div class="field full">
+                  <label for="reason">Reason for applying</label>
+                  <textarea id="reason" name="reason" required></textarea>
+                </div>
+              </div>
+
+              <div class="mail-note">
+                Mail recipient: liheap.assistance@gmail.com
+              </div>
+
+              <div class="submit-row">
+                <button class="button button-primary" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="reviewModal" class="review-modal" aria-modal="true" role="dialog" aria-labelledby="reviewTitle">
+      <div class="review-box">
+        <h2 id="reviewTitle">Review Your Information</h2>
+        <p>Please confirm your details before sending your application.</p>
+
+        <div class="review-list">
+          <div class="review-item"><span>First name</span><strong id="reviewFirstName"></strong></div>
+          <div class="review-item"><span>Last name</span><strong id="reviewLastName"></strong></div>
+          <div class="review-item"><span>Address</span><strong id="reviewAddress"></strong></div>
+          <div class="review-item"><span>Phone</span><strong id="reviewPhone"></strong></div>
+          <div class="review-item"><span>Email</span><strong id="reviewEmail"></strong></div>
+          <div class="review-item"><span>Occupation & monthly income</span><strong id="reviewOccupationIncome"></strong></div>
+          <div class="review-item"><span>Reason for applying</span><strong id="reviewReason"></strong></div>
+        </div>
+
+        <div class="review-actions">
+          <button class="button button-secondary" type="button" id="closeReview">Edit</button>
+          <button class="button button-primary" type="button" id="confirmSubmit">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById('liheapForm');
+      const modal = document.getElementById('reviewModal');
+      const closeReview = document.getElementById('closeReview');
+      const confirmSubmit = document.getElementById('confirmSubmit');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        document.getElementById('reviewFirstName').textContent = formData.get('firstName');
+        document.getElementById('reviewLastName').textContent = formData.get('lastName');
+        document.getElementById('reviewAddress').textContent = formData.get('address');
+        document.getElementById('reviewPhone').textContent = formData.get('phone');
+        document.getElementById('reviewEmail').textContent = formData.get('email');
+        document.getElementById('reviewOccupationIncome').textContent = formData.get('occupationIncome');
+        document.getElementById('reviewReason').textContent = formData.get('reason');
+
+        modal.classList.add('open');
+      });
+
+      closeReview.addEventListener('click', function () {
+        modal.classList.remove('open');
+      });
+
+      confirmSubmit.addEventListener('click', function () {
+        const formData = new FormData(form);
+        const payload = new URLSearchParams(formData).toString();
+
+        const mailtoLink = `mailto:liheap.assistance@gmail.com?subject=${encodeURIComponent('LIHEAP Application Submission')}&body=${encodeURIComponent(
+          'LIHEAP Application Submission\n\n' +
+          'First name: ' + formData.get('firstName') + '\n' +
+          'Last name: ' + formData.get('lastName') + '\n' +
+          'Address: ' + formData.get('address') + '\n' +
+          'Phone: ' + formData.get('phone') + '\n' +
+          'Email: ' + formData.get('email') + '\n' +
+          'Occupation and monthly income: ' + formData.get('occupationIncome') + '\n\n' +
+          'Reason for applying:\n' + formData.get('reason')
+        )}`;
+
+        window.location.href = mailtoLink;
+      });
+    </script>
+  </body>
+</html>
